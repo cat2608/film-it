@@ -43,6 +43,13 @@ User.statics.login = (attributes) ->
       promise.done error, null
   promise
 
+User.statics.favorite = (user_id, movie_id) ->
+  promise = new Hope.Promise()
+  movie = $addToSet: movies: movie_id
+  @findOneAndUpdate _id: user_id, movie, (error, result) ->
+    promise.done error, result
+  promise
+
 # -- Instance methods ----------------------------------------------------------
 User.methods.parse = ->
   id        : @_id

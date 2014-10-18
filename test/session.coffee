@@ -7,16 +7,15 @@ module.exports = ->
   tasks.push _signup(user) for user in ZENrequest.users
   tasks.push _login(user) for user in ZENrequest.users
   tasks.push _incorrectCredentials ZENrequest.users[1]
-
   tasks
 
 
 # Promises
 _signup = (user) -> ->
-  Test "POST", "api/signup", user, null, "#{user.name} is registered", 400
+  Test "POST", "api/signup", user, null, "Signup #{user.name}", 400
 
 _login = (user) -> ->
-  Test "POST", "api/login", user, null, "#{user.name} is logged", 200, (response) ->
+  Test "POST", "api/login", user, null, "Login #{user.name}", 200, (response) ->
     user.id = response.id
 
 _incorrectCredentials = (user) -> ->
