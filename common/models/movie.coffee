@@ -17,8 +17,7 @@ Movie.statics.findOrRegister = (parameters) ->
       promise.done error, result
     else
       movie = db.model "Movie", Movie
-      new movie(parameters).save (error, value) ->
-        promise.done error, value
+      new movie(parameters).save (error, value) -> promise.done error, value
   promise
 
 

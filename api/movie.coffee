@@ -12,7 +12,7 @@ module.exports = (server) ->
     Hope.shield([ ->
       Session request, response
     , (error, session) ->
-      omdb.proxy "GET", null, s: request.parameters.s
+      omdb.resource "GET", null, s: request.parameters.s
     ]).then (error, result) ->
       _handleOmdbResponse response, error, result
 
@@ -21,7 +21,7 @@ module.exports = (server) ->
     Hope.shield([ ->
       Session request, response
     , (error, session) ->
-      omdb.proxy "GET", null, i: request.parameters.i
+      omdb.resource "GET", null, i: request.parameters.i
     ]).then (error, result) ->
       _handleOmdbResponse response, error, result
 

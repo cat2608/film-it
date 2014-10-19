@@ -9,7 +9,7 @@ omdb =
   host    : "omdbapi.com"
   port    : 80
 
-  proxy: (method, url, parameters = {}, headers = {}) ->
+  resource: (method, url, parameters = {}, headers = {}) ->
     promise = new Hope.Promise()
     options =
       host    : @host
