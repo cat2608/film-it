@@ -8,7 +8,7 @@ environment: development
 
 # -- RESTful services ----------------------------------------------------------
 api:
-  - user
+  - session
   - movie
 
 # -- HTML pages ----------------------------------------------------------------

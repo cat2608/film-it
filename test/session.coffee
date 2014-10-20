@@ -10,7 +10,7 @@ module.exports = ->
   tasks
 
 
-# Promises
+# -- Promises ------------------------------------------------------------------
 _signup = (user) -> ->
   Test "POST", "api/signup", user, null, "Signup #{user.name}", 400
 

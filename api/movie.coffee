@@ -39,6 +39,25 @@ module.exports = (server) ->
       else
         response.ok()
 
+
+  server.get "/api/movies", (request, response) ->
+    Hope.shield([ ->
+      Session request, response
+    , (error, session) ->
+      filter = _id: $in: session.movies
+      Movie.search filter
+    , (error, movies) ->
+      promise = new Hope.Promise()
+      values = []
+      movies.forEach (movie) ->
+        omdb.resource("GET", null, i: movie.imdbid).then (error, imdb) ->
+          values.push imdb
+          if values.length is movies.length then promise.done error, values
+      promise
+    ]).then (error, result) ->
+      _handleOmdbResponse response, error, result
+
+
 # -- Private Methods -----------------------------------------------------------
 _handleOmdbResponse = (response, error, result) ->
   if error? or result.Response is "False"
