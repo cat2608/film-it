@@ -1,5 +1,4 @@
 "use strict"
-Hope = require("zenserver").Hope
 User = require "../common/models/user"
 
 

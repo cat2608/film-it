@@ -22,4 +22,4 @@ _incorrectCredentials = (user) -> ->
   data =
     mail    : ZENrequest.users[1].mail
     password: "Wow"
-  Test "POST", "api/login", data, null, "#{user.name} entered wrong password when logging", 403
+  Test "POST", "api/login", data, null, "#{user.name} entered wrong password when login", 403

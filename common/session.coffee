@@ -3,15 +3,15 @@ Hope = require("zenserver").Hope
 User = require "./models/user"
 
 
-module.exports = (request, response) ->
+module.exports = (request, response, redirect = false) ->
   promise = new Hope.Promise()
   auth = request.session
   if not auth
-    response.unauthorized()
+    if redirect then promise.done true else response.unauthorized()
   else
     User.findOne _id: auth, (error, result) ->
       if result
         promise.done error, result
       else
-        response.unauthorized()
+        if redirect then promise.done true else response.unauthorized()
   promise

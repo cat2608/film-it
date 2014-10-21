@@ -56,6 +56,7 @@ User.methods.parse = ->
   username  : @username
   mail      : @mail
   avatar    : @avatar
+  movies    : @movies
   created_at: @created_at
 
 
