@@ -34,8 +34,7 @@ User.statics.login = (attributes) ->
   promise = new Hope.Promise()
   @findOne mail: attributes.mail, (error, user) ->
     hash = crypto.createHash("sha256")
-            .update(attributes.password)
-            .digest("base64")
+          .update(attributes.password).digest("base64")
     if user and user.password is hash
       promise.done null, user
     else
@@ -51,6 +50,11 @@ User.statics.favorite = (user_id, movie_id) ->
   promise
 
 # -- Instance methods ----------------------------------------------------------
+User.methods.updateAttributes = (attributes) ->
+  promise = new Hope.Promise()
+  @update attributes, (error, result) -> promise.done error, result
+  promise
+
 User.methods.parse = ->
   id        : @_id
   username  : @username

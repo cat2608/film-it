@@ -9,9 +9,13 @@ environment: development
 # -- RESTful services ----------------------------------------------------------
 api:
   - session
+  - profile
   - movie
 
 # -- HTML pages ----------------------------------------------------------------
+# www:
+#   - index
+
 # -- Static resources ----------------------------------------------------------
 statics:
   - url     : /temp/resources
