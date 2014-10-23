@@ -1,0 +1,24 @@
+<section>
+  <nav>
+    <h1>TODO Films</h1>
+    <form action="/logout" method="get">
+        <button style="float: right;">Logout</button>
+    </form>
+  </nav>
+  <div>
+      {{#movies}}
+        <h3>{{Title}}</h3>
+        <img src="{{{Poster}}}">
+        <p><b>Director:</b> {{Director}}</p>
+        <p><b>Año:</b> {{Year}}</p>
+        <p><b>Sinopsis:</b> {{Plot}}</p>
+      {{/movies}}
+  </div>
+  <style type="text/css">
+   div {
+      -webkit-column-count: 2;
+      -moz-column-count: 2;
+      column-count: 2;
+   }
+  </style>
+</section>

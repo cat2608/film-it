@@ -13,8 +13,7 @@ _updateProfile = (user) -> ->
   parameters =
     username  : "teleject"
     avatar    : "https://s3.amazonaws.com/uifaces/faces/twitter/teleject/128.jpg"
-  Test "PUT", "api/user", parameters, _setHeaderSession(user), "#{parameters.username} modified profile data", 200, (response) ->
-    console.log response
+  Test "PUT", "api/user", parameters, _setHeaderSession(user), "#{parameters.username} modified profile data", 200
 
 
 # -- Private methods -----------------------------------------------------------
