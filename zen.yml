@@ -13,8 +13,8 @@ api:
   - movie
 
 # -- HTML pages ----------------------------------------------------------------
-# www:
-#   - index
+www:
+  - index
 
 # -- Static resources ----------------------------------------------------------
 statics:
@@ -32,7 +32,7 @@ statics:
 # -- session -------------------------------------------------------------------
 session:
   # Cookie Request
-  cookie: zencookie
+  cookie: filmit
   domain: ""
   path  : "/"
   expire: 3600 #seconds

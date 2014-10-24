@@ -42,6 +42,15 @@ User.statics.login = (attributes) ->
       promise.done error, null
   promise
 
+User.statics.search = (query, limit = 0) ->
+  promise = new Hope.Promise()
+  @find(query).limit(limit).exec (error, result) ->
+    if limit is 1 and not error
+      error = code: 402, message: "User not found." if result.length is 0
+      value = result[0] if result.length isnt 0
+    promise.done error, value
+  promise
+
 User.statics.favorite = (user_id, movie_id) ->
   promise = new Hope.Promise()
   movie = $addToSet: movies: movie_id

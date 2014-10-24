@@ -14,13 +14,20 @@ module.exports = (server) ->
         response.session user._id
         response.redirect "movies"
       else
-        response.page "index", page: "movies"
+        response.page "index"
 
+  server.post "/signup", (request, response) ->
+    if request.required ['mail', 'password']
+      User.login(request.parameters).then (error, result) ->
+        if error
+          response.json message: error.message, error.code
+        else
+          response.json result.parse()
 
   server.get "/movies", (request, response) ->
     Session(request, response, redirect = true).then (error, session) ->
       unless session
-        response.page "index", page: "movies"
+        response.page "index"
       else
         Hope.shield([ ->
           Movie.search _id: $in: session.movies
@@ -49,9 +56,14 @@ module.exports = (server) ->
   server.get "/", (request, response) ->
     Session(request, response, redirect = true).then (error, session) ->
       if session
-        bindings =
-          page    : "movies"
-          session : session.parse()
         response.redirect "movies"
       else
-        response.page "index", page: "movies"
+        response.page "index"
+
+
+
+
+
+
+
+
