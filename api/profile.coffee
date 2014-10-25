@@ -31,3 +31,14 @@ module.exports = (server) ->
         response.badRequest()
       else
         response.ok()
+
+  server.delete "/api/user", (request, response) ->
+    Hope.shield([ ->
+      Session request, response
+    , (error, session) ->
+      User.deleteAccount session._id
+    ]).then (error, result) ->
+      if error
+        response.badRequest()
+      else
+        response.ok()

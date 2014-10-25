@@ -9,7 +9,7 @@ module.exports = (request, response, redirect = false) ->
   if not auth
     if redirect then promise.done true else response.unauthorized()
   else
-    User.findOne _id: auth, (error, result) ->
+    User.search(_id: auth, limit = 1).then (error, result) ->
       if result
         promise.done error, result
       else

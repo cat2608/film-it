@@ -58,6 +58,11 @@ User.statics.favorite = (user_id, movie_id) ->
     promise.done error, result
   promise
 
+User.statics.deleteAccount = (user_id) ->
+  promise = new Hope.Promise()
+  @remove _id: user_id, (error, result) -> promise.done error, result
+  promise
+
 # -- Instance methods ----------------------------------------------------------
 User.methods.updateAttributes = (attributes) ->
   promise = new Hope.Promise()

@@ -8,6 +8,7 @@ module.exports = ->
   tasks.push _updateProfile session
   tasks.push _getProfile session
   tasks.push _getProfile session, ZENrequest.users[0]
+  tasks.push _deleteAccount ZENrequest.users[3]
   tasks
 
 
@@ -23,6 +24,10 @@ _getProfile = (user, friend = null) -> ->
   parameters.id = friend.id if friend?
   message = if friend then "#{user.name} gets details of #{friend.name}" else "#{user.name} checks profile data"
   Test "GET", "api/user", parameters, _setHeaderSession(user), message, 200
+
+_deleteAccount = (user) -> ->
+  Test "DELETE", "api/user", null, _setHeaderSession(user), "#{user.name} removes account", 200
+
 
 # -- Private methods -----------------------------------------------------------
 _setHeaderSession = (user) ->

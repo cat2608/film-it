@@ -20,6 +20,11 @@ users:
     - name      : U2
       mail      : u2@film.it
       password  : u2
-
+    - name      : U3
+      mail      : u3@film.it
+      password  : u3
+    - name      : U4
+      mail      : u4@film.it
+      password  : u4
 movies:
     - s : Friday the 13th
