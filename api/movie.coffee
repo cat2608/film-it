@@ -1,8 +1,10 @@
 "use strict"
 Hope    = require("zenserver").Hope
+C       = require "../common/constants"
+List    = require "../common/models/list"
+Movie   = require "../common/models/movie"
 omdb    = require "../common/lib/omdb"
 Session = require "../common/session"
-Movie   = require "../common/models/movie"
 User    = require "../common/models/user"
 
 
@@ -45,30 +47,9 @@ module.exports = (server) ->
       , (error, @session) =>
         Movie.searchOrRegister imdbid: request.parameters.imdbid
       , (error, movie) =>
-        User.favorite @session._id, movie._id
+        List.register user: @session, movie: movie, state: C.STATE.ACTIVE
       ]).then (error, result) ->
         if error
           response.json message: error.code, error.message
         else
           response.ok()
-
-
-  server.get "/api/movies", (request, response) ->
-    Hope.shield([ ->
-      Session request, response
-    , (error, session) ->
-      filter = _id: $in: session.movies
-      Movie.search filter
-    , (error, movies) ->
-      promise = new Hope.Promise()
-      values = []
-      movies.forEach (movie) ->
-        omdb.resource("GET", null, i: movie.imdbid).then (error, imdb) ->
-          values.push imdb
-          if values.length is movies.length then promise.done error, values
-      promise
-    ]).then (error, result) ->
-      if error
-        response.json message: error.message, error.code
-      else
-        response.json result

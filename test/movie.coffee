@@ -9,10 +9,7 @@ module.exports = ->
   tasks.push _search user, movie
   tasks.push _getDetails user, movie
   tasks.push _favMovie user, movie
-  tasks.push _getMovieList user
-
   tasks
-
 
 # -- Promises ------------------------------------------------------------------
 _search = (user, movie) -> ->
@@ -27,10 +24,6 @@ _getDetails = (user, movie) -> ->
 
 _favMovie = (user, movie) -> ->
   Test "POST", "api/movie/fav", movie, _setHeaderSession(user), "#{user.name} fav '#{movie.s}' to watch later", 200
-
-_getMovieList = (user) -> ->
-  Test "GET", "api/movies", null, _setHeaderSession(user), "#{user.name} gets list of movies pending to watch", 200
-
 
 # -- Private methods -----------------------------------------------------------
 _setHeaderSession = (user) ->
