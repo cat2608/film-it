@@ -16,12 +16,12 @@ module.exports = ->
 
 # -- Promises ------------------------------------------------------------------
 _search = (user, movie) -> ->
-  parameters = s : movie.s
+  parameters = title : movie.title
   Test "GET", "api/movie/search", parameters, _setHeaderSession(user), "#{user.name} is looking for '#{movie.s}'", 200, (response) ->
     movie.imdbid = response.Search[0].imdbID
 
 _getDetails = (user, movie) -> ->
-  parameters = i : movie.imdbid
+  parameters = imdbid : movie.imdbid
   Test "GET", "api/movie/info", parameters, _setHeaderSession(user), "#{user.name} get details of '#{movie.s}'", 200, (response) ->
     movie.imdb = response.imdbID
 
