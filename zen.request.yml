@@ -27,4 +27,4 @@ users:
       mail      : u4@film.it
       password  : u4
 movies:
-    - s : Friday the 13th
+    - title : Friday the 13th

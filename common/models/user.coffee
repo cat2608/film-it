@@ -7,7 +7,6 @@ crypto  = require "crypto"
 
 
 User = new Schema
-  movies    : [type: Schema.ObjectId, ref: "Movie"]
   username  : type: String
   mail      : type: String, unique: true, required: true
   avatar    : type: String, default: "http://appnima.com/img/avatar.jpg"
@@ -51,13 +50,6 @@ User.statics.search = (query, limit = 0) ->
     promise.done error, value
   promise
 
-User.statics.favorite = (user_id, movie_id) ->
-  promise = new Hope.Promise()
-  movie = $addToSet: movies: movie_id
-  @findOneAndUpdate _id: user_id, movie, (error, result) ->
-    promise.done error, result
-  promise
-
 User.statics.deleteAccount = (user_id) ->
   promise = new Hope.Promise()
   @remove _id: user_id, (error, result) -> promise.done error, result
@@ -74,8 +66,6 @@ User.methods.parse = ->
   username  : @username
   mail      : @mail
   avatar    : @avatar
-  movies    : @movies
   created_at: @created_at
-
 
 exports = module.exports = db.model "User", User
