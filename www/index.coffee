@@ -1,14 +1,14 @@
 "use strict"
 Hope    = require("zenserver").Hope
 omdb    = require "../common/lib/omdb"
-User    = require "../common/models/user"
-Movie   = require "../common/models/movie"
-Session = require "../common/session"
+# User    = require "../common/models/user"
+# Movie   = require "../common/models/movie"
+# Session = require "../common/session"
 
 
-module.exports = (server) ->
+module.exports = (zen) ->
 
-  server.post "/login", (request, response) ->
+  zen.post "/login", (request, response) ->
     User.login(request.parameters).then (error, user) ->
       if user
         response.session user._id
@@ -16,7 +16,7 @@ module.exports = (server) ->
       else
         response.page "index"
 
-  server.post "/signup", (request, response) ->
+  zen.post "/signup", (request, response) ->
     if request.required ['mail', 'password']
       User.login(request.parameters).then (error, result) ->
         if error
@@ -24,7 +24,7 @@ module.exports = (server) ->
         else
           response.json result.parse()
 
-  server.get "/movies", (request, response) ->
+  zen.get "/movies", (request, response) ->
     Session(request, response, redirect = true).then (error, session) ->
       unless session
         response.page "index"
@@ -48,19 +48,17 @@ module.exports = (server) ->
             response.page "movies", bindings
 
 
-  server.get "/logout", (request, response) ->
+  zen.get "/logout", (request, response) ->
     response.logout()
     response.redirect "/"
 
 
-  server.get "/", (request, response) ->
-    Session(request, response, redirect = true).then (error, session) ->
-      if session
-        response.redirect "movies"
-      else
-        response.page "index"
-
-
+  zen.get "/", (request, response) ->
+    bindings =
+      page       : "landing"
+      session    : undefined
+      meta       : description: ""
+    response.page "index", bindings, ["partial.landing"]
 
 
 
