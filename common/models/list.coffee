@@ -24,4 +24,22 @@ List.statics.register = (parameters) ->
       new list(parameters).save (error, value) -> promise.done error, value
   promise
 
+List.statics.search = (query, limit = 0, populate = "") ->
+  promise = new Hope.Promise()
+  @find(query).populate(populate).limit(limit).exec (error, value) ->
+    if limit is 1 and not error
+      error = code: 402, message: "List not found." if value.length is 0
+      value = value[0] if value.length isnt 0
+    promise.done error, value
+  promise
+
+# -- Instance methods ----------------------------------------------------------
+List.methods.parse = ->
+  id        : @_id
+  user      : @user
+  movie     : @movie
+  state     : @state
+  updated_at: @updated_at
+  created_at: @created_at
+
 exports = module.exports = db.model "List", List

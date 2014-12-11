@@ -14,16 +14,16 @@ module.exports = ->
 # -- Promises ------------------------------------------------------------------
 _search = (user, movie) -> ->
   parameters = title : movie.title
-  Test "GET", "api/movie/search", parameters, _setHeaderSession(user), "#{user.name} is looking for '#{movie.s}'", 200, (response) ->
+  Test "GET", "api/movie/search", parameters, _setHeaderSession(user), "#{user.name} is looking for '#{movie.title}'", 200, (response) ->
     movie.imdbid = response.Search[0].imdbID
 
 _getDetails = (user, movie) -> ->
   parameters = imdbid : movie.imdbid
-  Test "GET", "api/movie/info", parameters, _setHeaderSession(user), "#{user.name} get details of '#{movie.s}'", 200, (response) ->
+  Test "GET", "api/movie/info", parameters, _setHeaderSession(user), "#{user.name} get details of '#{movie.title}'", 200, (response) ->
     movie.imdb = response.imdbID
 
 _favMovie = (user, movie) -> ->
-  Test "POST", "api/movie/fav", movie, _setHeaderSession(user), "#{user.name} fav '#{movie.s}' to watch later", 200
+  Test "POST", "api/movie/fav", movie, _setHeaderSession(user), "#{user.name} fav '#{movie.title}' to watch later", 200
 
 # -- Private methods -----------------------------------------------------------
 _setHeaderSession = (user) ->
