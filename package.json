@@ -8,8 +8,18 @@
     "coffee-script" : "*",
     "zenserver"     : "*"
   },
-  "devDependencies": {
-    "zenrequest": "*"
+  "devDependencies" : {
+    "gulp"        : "*",
+    "gulp-coffee" : "*",
+    "gulp-concat" : "*",
+    "gulp-flatten": "*",
+    "gulp-header" : "*",
+    "gulp-jasmine": "*",
+    "gulp-stylus" : "*",
+    "gulp-uglify" : "*",
+    "gulp-util"   : "*",
+    "gulp-yml"    : "*",
+    "zenrequest"  : "*"
   },
   "scripts"         : {
     "start": "node zen" ,

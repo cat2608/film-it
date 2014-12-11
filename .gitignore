@@ -1,2 +1,6 @@
-node_modules/*
-environment/*
+assets/css
+assets/js
+bower_components
+environment
+node_modules
+zen.error.json
