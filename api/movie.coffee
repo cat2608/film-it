@@ -14,7 +14,10 @@ module.exports = (server) ->
     , (error, session) ->
       omdb.resource "GET", null, s: request.parameters.s
     ]).then (error, result) ->
-      _handleOmdbResponse response, error, result
+      if error
+        response.json message: error.message, error.code
+      else
+        response.json result
 
 
   server.get "/api/movie/info", (request, response) ->
@@ -22,15 +25,22 @@ module.exports = (server) ->
       Session request, response
     , (error, session) ->
       omdb.resource "GET", null, i: request.parameters.i
+    , (error, movie) ->
+      parameters = {}
+      parameters[key.toLowerCase()] = value for key, value of movie
+      Movie.searchOrRegister parameters
     ]).then (error, result) ->
-      _handleOmdbResponse response, error, result
+      if error
+        response.badRequest()
+      else
+        response.json movie: result.parse()
 
 
   server.post "/api/movie/fav", (request, response) ->
     Hope.shield([ ->
       Session request, response
     , (error, @session) =>
-      Movie.findOrRegister imdbid: request.parameters.imdbid
+      Movie.searchOrRegister imdbid: request.parameters.imdbid
     , (error, movie) =>
       User.favorite @session._id, movie._id
     ]).then (error, result) ->
@@ -55,12 +65,7 @@ module.exports = (server) ->
           if values.length is movies.length then promise.done error, values
       promise
     ]).then (error, result) ->
-      _handleOmdbResponse response, error, result
-
-
-# -- Private Methods -----------------------------------------------------------
-_handleOmdbResponse = (response, error, result) ->
-  if error? or result.Response is "False"
-    response.json message: "500", "Internal Server Error"
-  else
-    response.json result
+      if error
+        response.json message: error.message, error.code
+      else
+        response.json result

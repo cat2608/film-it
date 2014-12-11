@@ -33,8 +33,8 @@ omdb =
       response.on "data", (chunk) -> body += chunk
       response.on "end", ->
         body = JSON.parse body if body?
-        if response.statusCode >= 400
-          error = code: response.statusCode, message: body.message
+        if response.statusCode >= 400 or body.Response is "False"
+          error = code: 500, message: "Bad Request"
           body = undefined
         promise.done error, body
 
