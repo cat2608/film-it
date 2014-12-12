@@ -22,10 +22,9 @@ header
   > .logo
     float: left
     margin: 18px 0 0 5%
-    > img
-      display: block
-      width: 60px
-      height: 18px
+    color: WHITE
+    font-weight: FONT_WEIGHT_BOLD
+
   > nav
     display: inline-block
     float: right
@@ -35,42 +34,54 @@ header
       line-height: 30px
       padding: 0 2em
 
+footer
+  position: fixed
+  z-index: 1980
+  bottom: 1rem
+  left: 0
+  width: 100%
+  text-align: center
+  font-size: FONT_SIZE_TINY
+  opacity: 0.75
+  transition opacity ANIMATION_DURATION
+  > a
+    font-weight: FONT_WEIGHT_BOLD
+
 article
   overflow: hidden
   max-width: 1440px
   margin: 0 auto
+  .intro
+    padding: 50px 5%
+    text-align: center
+    h1
+      margin-bottom: 10px
+      font-weight: 100
+      font-size: 25px
+      font-size: 1.5625rem
+      font-weight: 700
+      line-height: 1.2
+    p
+      padding: 0 0 20px
+      font-size: 14px
+      font-size: 0.875rem
+      line-height: 1.8
+      max-width: 560px
+      margin: 0 auto
+    nav:after
+      content: ""
+      display: table
+      clear: both
+    .btn
+      width: 120px
+      height: 40px
+      line-height: 40px
+      margin-right: 8px
 
-.cd-product-intro
-  padding: 50px 5%
-  text-align: center
-  h1
-    margin-bottom: 10px
-    font-weight: 100
-    font-size: 25px
-    font-size: 1.5625rem
-    font-weight: 700
-    line-height: 1.2
-  p
-    padding: 0 0 20px
-    font-size: 14px
-    font-size: 0.875rem
-    line-height: 1.8
-    max-width: 560px
-    margin: 0 auto
-  .cd-triggers:after
-    content: ""
-    display: table
-    clear: both
-  .btn
-    width: 120px
-    height: 40px
-    line-height: 40px
-    margin-right: 8px
+  #tour
+    position: relative
 
-#cd-product-tour
-  position: relative
-
-.cd-single-item
+.step
   padding: 50px 5% 120px
   width: 100%
   text-align: center
@@ -149,7 +160,7 @@ nav.slider
     text-indent: 100%
     white-space: nowrap
     color: transparent
-    background: #353850
+    background-color: darken(BACKGROUND, 20%)
     &::before
       /*this is the bacgrounf arrow - we have been used a before element to change the opacity on hover*/
       position: absolute
@@ -161,39 +172,39 @@ nav.slider
       width: 24px
       height: 16px
       opacity: .2
-      background: url(../img/cd-arrow.svg) no-repeat center center
+      background: url(../img/arrow.svg) no-repeat center center
       backface-visibility hidden
       transition opacity (ANIMATION_DURATION / 2)
-  .cd-next
+  .next
     border-left: 1px solid BACKGROUND
-  .cd-next::before
+  .next::before
     transform translateX(-50%) translateY(-50%) rotate(180deg)
 
 // -- MEDIA QUERIES ------------------------------------------------------------
 @media only screen and (min-width: 480px)
-  .cd-product-intro
+  .intro
     padding: 50px 10%
-  .cd-single-item
+  .step
     padding: 50px 10% 120px
 
 @media only screen and (min-width: 850px)
-  .cd-product-intro
+  .intro
     padding: 50px 15%
-  .cd-single-item
+  .step
     padding: 50px 15% 120px
     &:after
       content: ""
       display: table
       clear: both
-    .cd-caption
+    .caption
       width: 50%
       float: left
       margin-top: 180px
-    &:nth-child(2n) .cd-caption
+    &:nth-child(2n) .caption
       float: right
   .iphone
     float: right
-  .cd-single-item:nth-child(2n) .iphone
+  .step:nth-child(2n) .iphone
     float: left
 
 @media only screen and (min-width: 1070px)
@@ -209,9 +220,9 @@ nav.slider
         height: 25px
     > nav
       margin: 20px 5% 0 0
-     > .btn
-      height: 50px
-      line-height: 50px
+      > .btn
+        height: 50px
+        line-height: 50px
 
   .btn
     font-size: 14px
@@ -223,37 +234,39 @@ nav.slider
     height: 100%
     min-height: 500px
     padding: 0 10%
+    .intro
+      backface-visibility hidden
+      position: absolute
+      top: 50%
+      transform  translateY(-50%)
+      left: 10%
+      width: 50%
+      padding: 0
+      text-align: left
+      transition-property transform, opacity
+      transition-duration ANIMATION_DURATION
+      transition: transform 0.3s, opacity 0.3s
+      h1
+        font-size: 50px
+        font-size: 3.125rem
+      p
+        font-size: 1rem
+        padding: 10px 0 44px
+        margin: 0
+      .btn
+        margin-right: 15px
+        width: 190px
+        height: 60px
+        line-height: 60px
 
-  .cd-product-intro
-    backface-visibility hidden
-    position: absolute
-    top: 50%
-    transform  translateY(-50%)
-    left: 10%
-    width: 50%
-    padding: 0
-    text-align: left
-    transition-property transform, opacity
-    transition-duration ANIMATION_DURATION
-    transition: transform 0.3s, opacity 0.3s
-    h1
-      font-size: 50px
-      font-size: 3.125rem
-    p
-      font-size: 1rem
-      padding: 10px 0 44px
-      margin: 0
-    .btn
-      margin-right: 15px
-      width: 190px
-      height: 60px
-      line-height: 60px
+    &.in-tour
+      .intro
+        opacity: 0
+        transform translateY(-50%) translateX(-50%)
+      footer
+        opacity: 0
 
-  .is-product-tour .cd-product-intro
-    opacity: 0
-    transform translateY(-50%) translateX(-50%)
-
-  #cd-product-tour
+  #tour
     width: 100%
     max-width: 850px
     margin: 0 auto
@@ -267,10 +280,10 @@ nav.slider
       height: 100%
       width: 100%
 
-  .is-product-tour #cd-product-tour
+  .in-tour #tour
     transform translateY(-50%) translateX(0)
 
-  .cd-single-item
+  .step
     position: absolute
     top: 50%
     transform translateY(-50%)
@@ -288,7 +301,7 @@ nav.slider
       font-size: 1rem
       line-height: 1.5
       max-width: 600px
-    .cd-caption
+    .caption
       width: 60%
       float: right
       margin: 80px 0 0 5%
@@ -296,12 +309,12 @@ nav.slider
       transform translateZ(0)
       transition-property transform, opacity
       transition-duration ANIMATION_DURATION
-    &.cd-not-visible
+    &.not-visible
       visibility: hidden
-    &.cd-move-right .cd-caption
+    &.move-right .caption
       transform translateX(100px)
 
-  .is-product-tour .cd-single-item.cd-active .cd-caption
+  .in-tour .step.active .caption
     opacity: 1
 
   .iphone
@@ -319,7 +332,7 @@ nav.slider
       transition-duration ANIMATION_DURATION
       transform translateZ(0)
 
-  .cd-move-right .iphone img
+  .move-right .iphone img
     transform translateX(100%)
 
   nav.slider
@@ -329,11 +342,11 @@ nav.slider
       opacity: 0
       transition-property opacity, visibility, background
       transition-duration ANIMATION_DURATION
-  .is-product-tour nav.slider a
+  .in-tour nav.slider a
     visibility: visible
     opacity: 1
     transition-property opacity, visibility, background
     transition-duration ANIMATION_DURATION
-    &.cd-inactive
+    &.inactive
       visibility: hidden
       opacity: 0
