@@ -45,7 +45,11 @@ module.exports = (server) ->
       Hope.shield([ ->
         Session request, response
       , (error, @session) =>
-        Movie.searchOrRegister imdbid: request.parameters.imdbid
+        omdb.resource "GET", null, i: request.parameters.imdbid
+      , (error, imdb) ->
+        parameters = {}
+        parameters[key.toLowerCase()] = value for key, value of imdb
+        Movie.searchOrRegister parameters
       , (error, movie) =>
         List.register user: @session, movie: movie, state: C.STATE.ACTIVE
       ]).then (error, result) ->
