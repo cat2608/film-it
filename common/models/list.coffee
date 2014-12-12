@@ -37,7 +37,7 @@ List.statics.search = (query, limit = 0, populate = "") ->
 List.methods.parse = ->
   id        : @_id
   user      : @user
-  movie     : @movie
+  movie     : if @movie?._id then @movie.parse() else @movie
   state     : @state
   updated_at: @updated_at
   created_at: @created_at
