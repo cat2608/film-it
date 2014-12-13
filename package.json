@@ -22,7 +22,7 @@
     "zenrequest"  : "*"
   },
   "scripts"         : {
-    "start": "node zen" ,
+    "start": "nodemon zen.js zen development" ,
     "test" : "node zen.request.js"},
   "engines"         : { "node": "*"}
 }
