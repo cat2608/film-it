@@ -29,3 +29,5 @@ users:
       password  : u4
 movies:
     - title : Friday the 13th
+    - title : Monsters
+    - title : Aliens

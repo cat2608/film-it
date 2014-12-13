@@ -57,3 +57,16 @@ module.exports = (server) ->
           response.json message: error.code, error.message
         else
           response.ok()
+
+
+  server.delete "/api/movie/fav", (request, response) ->
+    if request.required ["movie"]
+      Hope.shield([ ->
+        Session request, response
+      , (error, session) ->
+        List.delete user: session, movie: request.parameters.movie
+      ]).then (error, result) ->
+        if error
+          response.json message: error.message, error.code
+        else
+          response.ok()

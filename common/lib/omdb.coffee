@@ -34,7 +34,7 @@ omdb =
       response.on "end", ->
         body = JSON.parse body if body?
         if response.statusCode >= 400 or body.Response is "False"
-          error = code: 500, message: "Bad Request"
+          error = code: 500, message: body.Error
           body = undefined
         promise.done error, body
 
