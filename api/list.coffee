@@ -18,3 +18,19 @@ module.exports = (server) ->
         response.json message: error.message, error.code
       else
         response.json list: (movie.parse() for movie in result)
+
+
+  server.put "/api/list/movie", (request, response) ->
+    if request.required ["movie", "state"]
+      Hope.shield([ ->
+        Session request, response
+      , (error, session) ->
+        filter =
+          user  : session
+          movie : request.parameters.movie
+        List.updateAttributes filter, state: request.parameters.state
+      ]).then (error, result) ->
+        if error
+          response.json message: error.message, error.code
+        else
+          response.ok()

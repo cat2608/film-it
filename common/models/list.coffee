@@ -33,6 +33,13 @@ List.statics.search = (query, limit = 0, populate = "") ->
     promise.done error, value
   promise
 
+List.statics.updateAttributes = (query, attributes) ->
+  promise = new Hope.Promise()
+  attributes.updated_at = new Date()
+  @findOneAndUpdate query, attributes, (error, value) ->
+    promise.done error, value
+  promise
+
 List.statics.delete = (query) ->
   promise = new Hope.Promise()
   @findOneAndRemove query, (error, value) -> promise.done error, value
