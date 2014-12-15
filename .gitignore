@@ -1,5 +1,6 @@
-assets/app/css/*.css
-assets/app/js/*.js
+assets/app/assets/css/*.css
+assets/app/assets/js/*.js
+assets/app/assets/scaffold
 assets/css/*.css
 assets/js/*.js
 bower_components
