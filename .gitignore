@@ -1,7 +1,7 @@
-assets/app/css
-assets/app/js
-assets/css
-assets/js
+assets/app/css/*.css
+assets/app/js/*.js
+assets/css/*.css
+assets/js/*.js
 bower_components
 environment
 node_modules
