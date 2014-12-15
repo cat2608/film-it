@@ -11,8 +11,11 @@
             "tests"
     ],
     "dependencies": {
-        "jquery"      : "*",
-        "modernizer"  : "*",
-        "stylmethods" : "*"
+        "jquery"            : "*",
+        "modernizer"        : "*",
+        "stylmethods"       : "*",
+        "atoms"             : "*",
+        "atoms-app-theme"   : "*"
     }
 }
+
