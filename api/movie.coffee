@@ -20,7 +20,7 @@ module.exports = (server) ->
         if error
           response.json message: error.message, error.code
         else
-          response.json result
+          response.json movies: result.Search
 
 
   server.get "/api/movie/info", (request, response) ->
