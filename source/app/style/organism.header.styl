@@ -1,0 +1,10 @@
+[data-atoms=app]
+  > [data-organism-article] > [data-organism-header]
+    background-color: THEME
+    transition margin-top (ANIMATION_DURATION / 3)
+    box-shadow 0 SHADOW_HEIGHT 0 darken(THEME, 10%), 0 SHADOW_HEIGHT U SHADOW_OPACITY
+  &.standalone
+    > [data-organism-article] > [data-organism-header]
+      border-top-color: darken(THEME, 10%)
+    > [data-organism-aside] > [data-organism-header]
+      border-top-color: darken(DARK, 10%)

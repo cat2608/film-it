@@ -19,8 +19,8 @@ www:
 
 # -- Static resources ----------------------------------------------------------
 statics:
-  - url     : /temp/resources
-    folder  : /static
+  - url     : /assets
+    folder  : /assets
     maxage  : 60 #secods
   - url     : /img
     folder  : /static/img

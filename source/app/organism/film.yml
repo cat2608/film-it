@@ -1,0 +1,63 @@
+id: film
+children:
+  - Organism.Header:
+      children:
+        - Molecule.Navigation:
+            children:
+              - Atom.Button:
+                  events:
+                    - touch
+                  icon: back
+                  path: back
+            style: left
+        - Atom.Heading:
+            size: h1
+            style: left
+            value: Film-it
+        - Molecule.Navigation:
+            children:
+              - Atom.Button:
+                  events:
+                    - touch
+                  icon: plus
+            style: right
+  - Organism.Section:
+      id: info
+      children:
+        - Atom.Figure:
+            id: poster
+            style: big
+        - Molecule.Div:
+            id: extra
+            children:
+              - Atom.Heading:
+                  id: title
+              - Atom.Text:
+                  id: year_director
+              - Atom.Text:
+                  value: Actors
+                  style: margin-top tiny
+              - Atom.Text:
+                  id: actors
+                  style: small
+              - Atom.Text:
+                  value: Summary
+                  style: margin-top tiny
+              - Atom.Text:
+                  id: summary
+                  style: small
+              - Molecule.Navigation:
+                  style: margin-top
+                  children:
+                    - Atom.Button:
+                        events:
+                          - touch
+                        text: Add to list
+                        icon: plus
+                        style: theme
+                    - Atom.Button:
+                        events:
+                          - touch
+                        text: Viewed
+                        icon: look
+            style: margin-all

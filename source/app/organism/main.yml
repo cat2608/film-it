@@ -1,0 +1,54 @@
+id: main
+children:
+  - Organism.Header:
+      children:
+        - Atom.Heading:
+            size: h1
+            value: Film-it
+            style: left margin-left
+  - Organism.Section:
+      id: films
+      children:
+        - Molecule.List:
+            id: search
+            events:
+              - select
+            callbacks:
+              - onFilmIMDB
+            bind:
+              entity: __.Entity.FilmIMDB
+              atom: Atom.Li
+              events:
+                - touch
+              create : true
+              destroy: true
+
+        - Molecule.List:
+            id: list
+            events:
+              - select
+            callbacks:
+              - onFilm
+            bind:
+              entity: __.Entity.Movie
+              atom: Atom.Li
+              events:
+                - touch
+  - Molecule.Navigation:
+      events:
+        - select
+      callbacks:
+        - onContext
+      children:
+        - Atom.Button:
+            text: Search
+            style: active
+        - Atom.Button:
+            text: Pending
+        - Atom.Button:
+            text: Viewed
+  - Molecule.Search:
+      children: []
+      events:
+        - submit
+      id: search

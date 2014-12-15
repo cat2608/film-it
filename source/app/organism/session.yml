@@ -1,0 +1,65 @@
+children:
+  - Organism.Section:
+      id: credentials
+      style: centered padding
+      children:
+        - Molecule.Form:
+            id: form
+            events:
+              - change
+            children:
+              - Atom.Input:
+                  name        : mail
+                  placeholder : mail
+                  style       : align center big
+                  events:
+                    - keyup
+              - Atom.Input:
+                  type        : password
+                  name        : password
+                  placeholder : password
+                  style       : align center
+                  events:
+                    - keyup
+              - Atom.Input:
+                  type        : password
+                  name        : repassword
+                  placeholder : Repeat your password...
+                  style       : align center signup-context
+                  events:
+                    - keyup
+              - Atom.Label:
+                  id          : error
+                  style       : align center error
+              - Atom.Button:
+                  text        : Log In
+                  style       : fluid theme login-context margin-top
+                  callbacks:
+                    - onLogin
+              - Atom.Button:
+                  id          : button_signup
+                  text        : Sign Up
+                  style       : fluid theme signup-context margin-top
+                  disabled    : true
+                  callbacks:
+                    - onSignup
+              - Atom.Button:
+
+                  text        : I'm not a member
+                  style       : fluid login-context
+                  callbacks:
+                    - onShowSignup
+              - Atom.Button:
+                  text        : I'm a member
+                  style       : fluid signup-context
+                  callbacks:
+                    - onShowLogin
+        - Molecule.Div:
+            id: div
+            children:
+              - Atom.Link:
+                  id     : remember
+                  text   : Remember my password
+                  style  : margin-top login-context
+                  href   : "http://appnima.com/forgot/5406dd44215f2b1946bbecc4"
+                  target : _blank

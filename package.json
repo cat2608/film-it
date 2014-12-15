@@ -1,6 +1,6 @@
 {
   "name"            : "film-it",
-  "version"         : "0.0.1",
+  "version"         : "0.0.2",
   "description"     : "TODO films",
   "homepage"        : "http://",
   "author"          : "Catalina Oyaneder <cat2608@gmail.com>",
@@ -12,6 +12,7 @@
     "gulp"        : "*",
     "gulp-coffee" : "*",
     "gulp-concat" : "*",
+    "gulp-connect": "*",
     "gulp-flatten": "*",
     "gulp-header" : "*",
     "gulp-jasmine": "*",

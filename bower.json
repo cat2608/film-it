@@ -15,7 +15,9 @@
         "modernizer"        : "*",
         "stylmethods"       : "*",
         "atoms"             : "*",
-        "atoms-app-theme"   : "*"
+        "atoms-icons"       : "*",
+        "atoms-app-theme"   : "*",
+        "hope"              : "*"
     }
 }
 
