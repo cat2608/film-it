@@ -6,6 +6,26 @@ children:
             size: h1
             value: Film-it
             style: left margin-left
+  - Molecule.Navigation:
+      events:
+        - select
+      callbacks:
+        - onContext
+      children:
+        - Atom.Button:
+            text: Search
+            style: active
+        - Atom.Button:
+            text: Pending
+        - Atom.Button:
+            text: Viewed
+            disabled: true
+  - Molecule.Search:
+      id: search
+      events:
+        - submit
+        - change
+
   - Organism.Section:
       id: films
       children:
@@ -21,7 +41,7 @@ children:
               events:
                 - touch
               create : true
-              destroy: true
+              # destroy: true
 
         - Molecule.List:
             id: list
@@ -34,21 +54,3 @@ children:
               atom: Atom.Li
               events:
                 - touch
-  - Molecule.Navigation:
-      events:
-        - select
-      callbacks:
-        - onContext
-      children:
-        - Atom.Button:
-            text: Search
-            style: active
-        - Atom.Button:
-            text: Pending
-        - Atom.Button:
-            text: Viewed
-  - Molecule.Search:
-      children: []
-      events:
-        - submit
-      id: search

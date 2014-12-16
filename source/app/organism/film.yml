@@ -14,13 +14,6 @@ children:
             size: h1
             style: left
             value: Film-it
-        - Molecule.Navigation:
-            children:
-              - Atom.Button:
-                  events:
-                    - touch
-                  icon: plus
-            style: right
   - Organism.Section:
       id: info
       children:
@@ -50,14 +43,14 @@ children:
                   style: margin-top
                   children:
                     - Atom.Button:
-                        events:
-                          - touch
-                        text: Add to list
-                        icon: plus
-                        style: theme
+                        text      : Add to list
+                        style     : theme
+                        action    : fav
+                        callbacks :
+                          - onAction
                     - Atom.Button:
-                        events:
-                          - touch
                         text: Viewed
-                        icon: look
+                        action    : view
+                        callbacks :
+                          - onAction
             style: margin-all
