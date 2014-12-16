@@ -45,7 +45,7 @@ Movie.statics.search = (query, limit = 0) ->
     if limit is 1 and not error
       error = code: 402, message: "Movie not found." if result.length is 0
       value = result[0] if result.length isnt 0
-    promise.done error, result
+    promise.done error, value
   promise
 
 # -- Instance methods ----------------------------------------------------------
