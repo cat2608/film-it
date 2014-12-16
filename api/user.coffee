@@ -25,17 +25,36 @@ module.exports = (server) ->
 
   server.post "/api/user/movie", (request, response) ->
     if request.required ["imdb"]
-      Hope.shield([ ->
-        Session request, response
-      , (error, @session) =>
-        Movie.search imdbid: request.parameters.imdb, limit = 1
-      , (error, movie) =>
-        List.register user: @session, movie: movie._id, state: C.STATE.ACTIVE
-      ]).then (error, result) ->
-        if error
-          response.json message: error.code, error.message
-        else
-          response.ok()
+      Session(request, response).then (error, session) ->
+        filter = imdbid: request.parameters.imdb
+        Movie.search(filter, limit = 1).then (error, movie) ->
+          if not movie
+            Hope.shield([ ->
+              omdb.resource "GET", null, i: request.parameters.imdb
+            , (error, imdb) ->
+              parameters = {}
+              parameters[key.toLowerCase()] = value for key, value of imdb when value isnt "N/A"
+              Movie.register parameters
+            , (error, movie) ->
+              List.register
+                user  : session
+                movie : movie._id
+                state : request.parameters.state
+            ]).then (error, result) ->
+              if error
+                response.json message: error.message, error.code
+              else
+                  response.ok()
+          else
+            List.register(
+              user  : session
+              movie : movie._id
+              state : request.parameters.state
+            ).then (error, result) ->
+              if error
+                response.json message: error.message, error.code
+              else
+                response.ok()
 
   server.put "/api/user/movie", (request, response) ->
     if request.required ["id", "state"]

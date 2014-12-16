@@ -14,10 +14,9 @@ class Atoms.Organism.Film extends Atoms.Organism.Article
 
   # -- Children bubble events --------------------------------------------------
   onAction: (event, atom) ->
-    parameters = imdb: @entity.imdb
-    action = atom.attributes.action
+    state = value for key, value in ["fav", "view"] when key is atom.attributes.action
+    parameters = imdb: @entity.imdb, state: state
     __.proxy("POST", "user/movie", parameters).then (error, response) ->
-      console.log "POST/movie/#{action}", error, response
       Atoms.Url.back()
 
   # -- Private events ----------------------------------------------------------
