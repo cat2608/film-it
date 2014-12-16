@@ -22,7 +22,7 @@ class Atoms.Organism.Film extends Atoms.Organism.Article
   # -- Private events ----------------------------------------------------------
   show: (@entity) =>
     console.log @entity
-    style = if entity.poster is "N/A" then "hide" else "big"
+    style = if entity.poster then "big" else "hiden"
     @info.poster.refresh url: entity.poster, style: style
     @info.extra.title.el.html entity.title
     @info.extra.year.el.html entity.year.toString()

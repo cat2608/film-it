@@ -15,7 +15,7 @@ class __.Entity.Film extends Atoms.Class.Entity
       super attributes
 
   parse: ->
-    image       : @poster or null
+    image       : @poster or "https://cdn4.iconfinder.com/data/icons/eldorado-multimedia/40/movie_1-512.png"
     info        : @year
     text        : @title
     description : @director
