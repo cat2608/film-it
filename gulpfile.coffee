@@ -37,7 +37,8 @@ app =
                 'source/app/style/app.styl'
                 'source/app/style/atom.*.styl'
                 'source/app/style/molecule.*.styl'
-                'source/app/style/organism.*.styl']
+                'source/app/style/organism.*.styl'
+                'source/app/style/app.*.styl']
   yml       : [ 'source/app/organism/*.yml']
   third_js  : [ 'bower_components/hope/hope.js',
                 'bower_components/atoms/atoms.js',

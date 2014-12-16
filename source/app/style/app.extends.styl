@@ -1,0 +1,26 @@
+[data-atom-li]
+  &.film
+    padding: 0 !important
+    figure
+      width: SIZE = (3.5 * U) !important
+      height: SIZE
+
+[data-organism-article="film"]
+  figure
+    &.hide
+      visibility: hidden
+
+  label
+    display: inline !important
+    margin-right: (U / 4)
+    padding: (U / 8) (U / 4)
+    width: auto !important
+    color: WHITE !important
+    font-weight: FONT_WEIGHT_BOLD !important
+    background-color: THEME
+
+  [data-atom-text]
+    &.tiny
+      font-weight: FONT_WEIGHT_BOLD
+      + [data-atom-text]
+        margin-top: 0

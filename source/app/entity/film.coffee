@@ -19,3 +19,4 @@ class __.Entity.Film extends Atoms.Class.Entity
     info        : @year
     text        : @title
     description : @director
+    style       : "film"

@@ -27,7 +27,11 @@ children:
               - Atom.Heading:
                   id: title
               - Atom.Text:
-                  id: year_director
+                  id: director
+              - Atom.Label:
+                  id: year
+              - Atom.Label:
+                  id: runtime
               - Atom.Text:
                   value: Actors
                   style: margin-top tiny
