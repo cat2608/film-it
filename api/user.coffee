@@ -21,7 +21,12 @@ module.exports = (server) ->
       if error
         response.json message: error.message, error.code
       else
-        response.json movies: (item.movie.parse() for item in list)
+        movies = []
+        for item in list
+          movie = item.movie.parse()
+          movie.state = item.state
+          movies.push movie
+        response.json movies: movies
 
   server.post "/api/user/movie", (request, response) ->
     if request.required ["imdb"]
