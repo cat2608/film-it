@@ -31,16 +31,18 @@ module.exports = (server) ->
 
   server.get "/api/movie/info", (request, response) ->
     if request.required ["imdb"]
-      Hope.shield([ ->
-        Session request, response
-      , (error, session) ->
-        omdb.resource "GET", null, i: request.parameters.imdb
-      , (error, movie) ->
-        parameters = {}
-        parameters[key.toLowerCase()] = value for key, value of movie
-        Movie.searchOrRegister parameters
-      ]).then (error, movie) ->
-        if error
-          response.badRequest()
-        else
-          response.json movie: movie.parse()
+      Session(request, response).then (error, session) ->
+        filter = imdbid: request.parameters.imdb
+        Movie.search(filter, limit = 1).then (error, movie) ->
+          if not movie
+            query = i: request.parameters.imdb
+            omdb.resource("GET", null, query).then (error, imdb) ->
+              return response.json message: error.message, error.code if error?
+              parameters = {}
+              parameters[key.toLowerCase()] = value for key, value of imdb when value isnt "N/A"
+
+              Movie.register(parameters).then (error, result) ->
+                return response.json message: error.message, error.code if error
+                response.json movie: result.parse()
+          else
+            response.json movie: movie.parse()

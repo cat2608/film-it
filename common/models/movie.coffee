@@ -6,7 +6,7 @@ db      = require("zenserver").Mongo.connections.primary
 
 
 Movie = new Schema
-  imdbid      : type: String
+  imdbid      : type: String, unique: true
   title       : type: String
   year        : type: Number
   rated       : type: String
@@ -29,14 +29,10 @@ Movie = new Schema
   created_at  : type: Date, default: Date.now
 
 # -- Static methods ------------------------------------------------------------
-Movie.statics.searchOrRegister = (parameters) ->
+Movie.statics.register = (parameters) ->
   promise = new Hope.Promise()
-  @findOne imdbid: parameters.imdbid, (error, result) ->
-    if result or error
-      promise.done error, result
-    else
-      movie = db.model "Movie", Movie
-      new movie(parameters).save (error, value) -> promise.done error, value
+  movie = db.model "Movie", Movie
+  new movie(parameters).save (error, value) -> promise.done error, value
   promise
 
 Movie.statics.search = (query, limit = 0) ->
