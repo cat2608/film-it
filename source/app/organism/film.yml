@@ -53,11 +53,11 @@ children:
                         events:
                           - touch
                         text: Add to list
-                        icon: plus
                         style: theme
+                        callbacks:
+                          - onAdd
                     - Atom.Button:
                         events:
                           - touch
                         text: Viewed
-                        icon: look
             style: margin-all

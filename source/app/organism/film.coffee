@@ -7,8 +7,8 @@ class Atoms.Organism.Film extends Atoms.Organism.Article
     do @render
 
   # -- Instance methods --------------------------------------------------------
-  show: (entity) ->
-    parameters = imdbid: entity.imdbID
+  show: (@entity) ->
+    parameters = imdbid: @entity.imdbID
     __.proxy("GET", "movie/info", parameters).then (error, response) =>
       entity = __.Entity.Film.create response?.movie
       # Data
@@ -17,12 +17,13 @@ class Atoms.Organism.Film extends Atoms.Organism.Article
       Atoms.Url.path "film/info"
 
   # -- Children bubble events --------------------------------------------------
-  onButtonTouch: (event, dispatcher, hierarchy...) ->
-    # Your code...
+  onAdd: (event, dispatcher, hierarchy...) ->
+    parameters = imdbid: @entity.imdbID
+    __.proxy("POST", "movie/fav", parameters).then (error, response) =>
+      Atoms.Url.back() unless error
 
   # -- Private events ----------------------------------------------------------
   binding: (entity) =>
-    console.log "[entity]", entity
     @info.poster.el.style "background-image", "url(#{entity.poster})"
     @info.extra.title.el.html entity.title
     @info.extra.year_director.el.html "#{entity.year} - #{entity.director}"
