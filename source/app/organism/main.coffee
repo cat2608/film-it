@@ -4,14 +4,18 @@ class Atoms.Organism.Main extends Atoms.Organism.Article
 
   render: ->
     super
+    @films.list.el.hide()
+    __.Entity.Film.bind "create", =>
+      @context.pending.refresh count: __.Entity.Film.count()
+
     setTimeout ->
-      __.proxy("GET", "list", {}, background = true).then (error, response) ->
-        console.log ">>>", error, response
+      __.proxy("GET", "user/movies", {}, background = true).then (error, response) ->
+        __.Entity.Film.create movie for movie in (response?.movies or [])
     , 100
 
-
   # -- Children bubble events --------------------------------------------------
-  onFilm: (event, dispatcher, hierarchy...) ->
+  onFilm: (atom) ->
+    __.Article.Film.show atom.entity
 
   onFilmIMDB: (atom) ->
     __.Article.Film.search atom.entity
@@ -31,6 +35,7 @@ class Atoms.Organism.Main extends Atoms.Organism.Article
     do @onSearchChange
     parameters = title: input.value()
     __.proxy("GET", "movie/search", parameters).then (error, response) =>
+      console.log "GET/movie/search", error, response
       __.Entity.FilmIMDB.create movie for movie in response?.movies or []
     false
 

@@ -51,7 +51,7 @@ Movie.statics.search = (query, limit = 0) ->
 # -- Instance methods ----------------------------------------------------------
 Movie.methods.parse = ->
   id          : @_id
-  imdbid      : @imdbid
+  imdb        : @imdbid
   title       : @title
   year        : @year
   rated       : @rated

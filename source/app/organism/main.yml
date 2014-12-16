@@ -7,6 +7,7 @@ children:
             value: Film-it
             style: left margin-left
   - Molecule.Navigation:
+      id: context
       events:
         - select
       callbacks:
@@ -16,10 +17,10 @@ children:
             text: Search
             style: active
         - Atom.Button:
+            id: pending
             text: Pending
         - Atom.Button:
             text: Viewed
-            disabled: true
   - Molecule.Search:
       id: search
       events:
@@ -41,7 +42,7 @@ children:
               events:
                 - touch
               create : true
-              # destroy: true
+              destroy: true
 
         - Molecule.List:
             id: list
@@ -50,7 +51,8 @@ children:
             callbacks:
               - onFilm
             bind:
-              entity: __.Entity.Movie
+              entity: __.Entity.Film
               atom: Atom.Li
               events:
                 - touch
+              create : true

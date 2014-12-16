@@ -6,7 +6,7 @@ User    = require "../common/models/user"
 
 module.exports = (server) ->
 
-  server.get "/api/user", (request, response) ->
+  server.get "/api/profile", (request, response) ->
     Hope.shield([ ->
       Session request, response
     , (error, session) ->
@@ -18,7 +18,7 @@ module.exports = (server) ->
       else
         response.json result
 
-  server.put "/api/user", (request, response) ->
+  server.put "/api/profile", (request, response) ->
     Hope.shield([ ->
       Session request, response
     , (error, session) ->
@@ -32,7 +32,7 @@ module.exports = (server) ->
       else
         response.ok()
 
-  server.delete "/api/user", (request, response) ->
+  server.delete "/api/profile", (request, response) ->
     Hope.shield([ ->
       Session request, response
     , (error, session) ->

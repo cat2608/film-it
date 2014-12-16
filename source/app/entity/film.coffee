@@ -2,7 +2,7 @@
 
 class __.Entity.Film extends Atoms.Class.Entity
 
-  @fields "id", "imdbid", "imdbrating", "imdbvotes",
+  @fields "id", "imdb", "imdbrating", "imdbvotes",
           "language", "metascore", "plot", "poster", "rated", "released",
           "actors", "country", "director", "genre", "runtime", "title",
           "type", "year"
@@ -15,9 +15,7 @@ class __.Entity.Film extends Atoms.Class.Entity
       super attributes
 
   parse: ->
-    image       : @url
-    icon        : "user" unless @url
-    info        : @when
-    text        : @name
-    description : @description or new Date()
-    style       : if @url then "thumb" else @style
+    image       : @poster or null
+    info        : @year
+    text        : @title
+    description : @director

@@ -1,6 +1,6 @@
 "use strict"
-User = require "../common/models/user"
 
+User = require "../common/models/user"
 
 module.exports = (server) ->
 
@@ -11,7 +11,6 @@ module.exports = (server) ->
           response.json message: error.message, error.code
         else
           response.json result.parse()
-
 
   server.post "/api/login", (request, response) ->
     if request.required ['mail', 'password']
