@@ -5,6 +5,17 @@
       width: SIZE = (3.5 * U) !important
       height: SIZE
 
+[data-molecule-form="search"]
+  background-color: BACKGROUND !important
+  [data-atom-input]
+    font-size: FONT_SIZE_SMALL !important
+    font-weight: FONT_WEIGHT_BOLD !important
+
+[data-organism-article] > [data-molecule-navigation] > [data-atom-button]
+  > small
+    display: inline !important
+    padding: 0 (U / 3)
+
 [data-organism-article="film"]
   figure
     &.hide

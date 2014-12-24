@@ -20,6 +20,7 @@ children:
             id: pending
             text: Pending
         - Atom.Button:
+            id: viewed
             text: Viewed
   - Molecule.Search:
       id: search
@@ -55,4 +56,4 @@ children:
               atom: Atom.Li
               events:
                 - touch
-              create : true
+              # create : true

@@ -16,12 +16,12 @@ class Atoms.Organism.Film extends Atoms.Organism.Article
   onAction: (event, atom) ->
     state = value for key, value in ["fav", "view"] when key is atom.attributes.action
     parameters = imdb: @entity.imdb, state: state
-    __.proxy("POST", "user/movie", parameters).then (error, response) ->
+    __.proxy("POST", "user/movie", parameters).then (error, response) =>
+      @entity.updateAttributes state: state
       Atoms.Url.back()
 
   # -- Private events ----------------------------------------------------------
   show: (@entity) =>
-    console.log @entity
     style = if entity.poster then "big" else "hiden"
     @info.poster.refresh url: entity.poster, style: style
     @info.extra.title.el.html entity.title

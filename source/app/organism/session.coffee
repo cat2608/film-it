@@ -51,7 +51,7 @@ class Atoms.Organism.Session extends Atoms.Organism.Article
         document.cookie = "filmit=#{__.session};path=/"
         Atoms.Url.path "main/films"
       else
-        @credentials.form.error.el.html(error.message).show()
+        @credentials.form.error.el.html(JSON.parse(error.message).message).show()
 
   _disableForm: ->
     @credentials.form.el.children().attr "disabled", true
