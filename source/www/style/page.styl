@@ -60,7 +60,7 @@ body
   background-color BACKGROUND
 
 a
-  color #f58780
+  color: lighten(COLOR, 50%)
   text-decoration none
 
 img
@@ -72,11 +72,13 @@ h1, h2
 .btn
   display inline-block
   text-align center
-  text-transform uppercase
   font-weight bold
   font-size 12px
   font-size 0.75rem
   color #ffffff
-  background-color BUTTON
-  box-shadow 0 1px 6px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.2)
+  background-color: lighten(BACKGROUND, 10%)
+  border-radius: 2px
+  box-shadow  inset 0 1px 0 rgba(255, 255, 255, 0.25)
   transition background-color (ANIMATION_DURATION / 2)
+  &.highlight
+    background-color darken(BACKGROUND, 20%)

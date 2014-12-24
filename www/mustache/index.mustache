@@ -3,12 +3,88 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,100,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/assets/css/film-it.css">
-  <title>Filmit</title>
+  <title>filmit</title>
 </head>
 <body>
-  {{> partial.landing}}
+  <header>
+    <div class="logo">filmit</div>
+    <nav><a href="https://play.google.com/store/apps" class="btn">Install in your android</a></nav>
+  </header>
+
+  <article>
+    <div class="intro">
+      <h1>filmit</h1>
+      <p>Click on the Start button to see the animated slideshow.<br>Videos will play on large devices only, on mobile you just see images.</p>
+      <nav>
+        <a href="https://play.google.com/store/apps" class="btn small">for android</a>
+        {{! <a href="" class="btn">ios</a> }}
+        <a href="#tour" class="btn highlight" data-type="tour">Start</a>
+      </nav>
+    </div>
+
+    <div id="tour">
+      <ul>
+        <li class="step active">
+          <div class="caption">
+            <h2>Selecciona una pelicula</h2>
+            <p>
+              Podrás buscar entre la mayor base de datos de películas del mundo, IMDB. Pudiendo conocer información general, director, actores, año e incluso comentarios de otros usuarios como tu.
+            </p>
+          </div>
+          <div class="iphone">
+            <div>
+              <div class="frame"></div>
+              <div class="wrapper">
+                <img src="/assets/img/screen-1.png" alt="Screen Preview 1">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step not-visible move-right">
+          <div class="caption">
+            <h2>Añadela a tu lista</h2>
+            <p>
+              En esta lista quedarán registradas todas esas películas que tanto quieres ver, o que alguíen te recomendo. Nunca volverás a olvidarte de ellas.
+            </p>
+          </div>
+          <div class="iphone">
+            <div>
+              <div class="frame"></div>
+              <div class="wrapper">
+                <img src="/assets/img/screen-2.png" alt="Screen Preview 2">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="step not-visible move-right">
+          <div class="caption">
+            <h2>Guardala para recomendar a otros</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus praesentium, quis ab iusto possimus quaerat perspiciatis voluptas obcaecati ipsam autem.
+            </p>
+          </div>
+          <div class="iphone">
+            <div>
+              <div class="frame"></div>
+              <div class="wrapper">
+                <img src="/assets/img/screen-3.png" alt="Screen Preview 3">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <nav class="slider">
+      <a class="prev" href="#0">Previous</a>
+      <a class="next" href="#0">Next</a>
+    </nav>
+
+    <footer>Made with passion fruit & thai tea by <a href="https://twitter.com/cataflu">@cataflu</a> & <a href="http://soyjavi.com">@soyjavi</a></footer>
+  </article>
+
+
   <script src="/assets/js/film-it.thirds.js"></script>
   <script src="/assets/js/film-it.js"></script>
   </body>
