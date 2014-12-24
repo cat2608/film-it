@@ -22,8 +22,8 @@ statics:
   - url     : /assets
     folder  : /assets
     maxage  : 60 #secods
-  - url     : /img
-    folder  : /static/img
+  - url     : /app
+    folder  : /assets/app
   - file    : humans.txt
     folder  : /static
     maxage  : 3600
