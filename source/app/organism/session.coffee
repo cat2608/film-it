@@ -49,7 +49,7 @@ class Atoms.Organism.Session extends Atoms.Organism.Article
       if response
         __.session = response.id
         document.cookie = "filmit=#{__.session};path=/"
-        Atoms.Url.path "main/films"
+        __.Article.Main.fetch()
       else
         @credentials.form.error.el.html(JSON.parse(error.message).message).show()
 
