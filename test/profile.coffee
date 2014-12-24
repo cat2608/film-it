@@ -17,16 +17,16 @@ _updateProfile = (user) -> ->
   parameters =
     username  : "teleject"
     avatar    : "https://s3.amazonaws.com/uifaces/faces/twitter/teleject/128.jpg"
-  Test "PUT", "api/user", parameters, _setHeaderSession(user), "#{parameters.username} modified profile data", 200
+  Test "PUT", "api/profile", parameters, _setHeaderSession(user), "#{parameters.username} modified profile data", 200
 
 _getProfile = (user, friend = null) -> ->
   parameters = {}
   parameters.id = friend.id if friend?
   message = if friend then "#{user.name} gets details of #{friend.name}" else "#{user.name} checks profile data"
-  Test "GET", "api/user", parameters, _setHeaderSession(user), message, 200
+  Test "GET", "api/profile", parameters, _setHeaderSession(user), message, 200
 
 _deleteAccount = (user) -> ->
-  Test "DELETE", "api/user", null, _setHeaderSession(user), "#{user.name} removes account", 200
+  Test "DELETE", "api/profile", null, _setHeaderSession(user), "#{user.name} removes account", 200
 
 
 # -- Private methods -----------------------------------------------------------
