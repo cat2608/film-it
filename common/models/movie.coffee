@@ -8,7 +8,7 @@ db      = require("zenserver").Mongo.connections.primary
 Movie = new Schema
   imdbid      : type: String, unique: true
   title       : type: String
-  year        : type: Number
+  year        : type: String
   rated       : type: String
   released    : type: String
   runtime     : type: String

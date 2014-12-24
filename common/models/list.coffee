@@ -14,9 +14,15 @@ List = new Schema
   created_at: type: Date, default: Date.now
 
 # -- Static methods ------------------------------------------------------------
-List.statics.register = (parameters) ->
+List.statics.updateOrRegister = (parameters) ->
   promise = new Hope.Promise()
-  @findOne parameters, (error, result) ->
+  query =
+    user  : parameters.user
+    movie : parameters.movie
+  attributes =
+    updated_at: new Date()
+    state     : parameters.state
+  @findOneAndUpdate query, attributes, (error, result) ->
     if error or result
       promise.done error, result
     else
@@ -30,13 +36,6 @@ List.statics.search = (query, limit = 0, populate = "") ->
     if limit is 1 and not error
       error = code: 402, message: "List not found." if value.length is 0
       value = value[0] if value.length isnt 0
-    promise.done error, value
-  promise
-
-List.statics.updateAttributes = (query, attributes) ->
-  promise = new Hope.Promise()
-  attributes.updated_at = new Date()
-  @findOneAndUpdate query, attributes, (error, value) ->
     promise.done error, value
   promise
 
