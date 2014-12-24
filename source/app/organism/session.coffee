@@ -48,11 +48,7 @@ class Atoms.Organism.Session extends Atoms.Organism.Article
       do @_enableForm
       if response
         __.session = response.id
-        # COOKIE
-        document.cookie = "filmit=#{__.session};path=/"
-        # LOCALSTORAGE
         window.localStorage.setItem "filmit", __.session
-
         __.Article.Main.fetch()
       else
         @credentials.form.error.el.html(JSON.parse(error.message).message).show()
