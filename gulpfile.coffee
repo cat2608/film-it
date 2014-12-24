@@ -21,7 +21,8 @@ www =
                 'source/www/style/__init.styl'
                 'source/www/style/page.styl'
                 'source/www/style/page.*.styl']
-  thirds    : [ 'bower_components/modernizr/modernizr.js'
+  thirds:
+    js      : [ 'bower_components/modernizr/modernizr.js'
                 'bower_components/jquery/dist/jquery.js']
   assets    : 'assets/'
 
@@ -40,6 +41,13 @@ app =
                 'source/app/style/organism.*.styl'
                 'source/app/style/app.*.styl']
   yml       : [ 'source/app/organism/*.yml']
+  thirds:
+    js      : [ 'bower_components/hope/hope.js',
+                'bower_components/atoms/atoms.js',
+                'bower_components/atoms/atoms.app.js']
+    css     : [ 'bower_components/atoms/atoms.app.css',
+                'bower_components/atoms-icons/atoms.icons.css',]
+
   third_js  : [ 'bower_components/hope/hope.js',
                 'bower_components/atoms/atoms.js',
                 'bower_components/atoms/atoms.app.js']
@@ -59,13 +67,17 @@ banner = [
 
 # -- TASKS ---------------------------------------------------------------------
 gulp.task 'thirds', ->
-  gulp.src(app.third_js)
-    .pipe(concat('atoms.js'))
-    .pipe(gulp.dest(app.assets + '/js'))
+  # WWW
+  for key, value of www.thirds
+    gulp.src(value)
+      .pipe(concat('film-it.thirds.' + key))
+      .pipe(gulp.dest(www.assets + '/' + key))
+  # APP
+  for key, value of app.thirds
+    gulp.src(value)
+      .pipe(concat('atoms.' + key))
+      .pipe(gulp.dest(app.assets + '/' + key))
 
-  gulp.src(app.third_css)
-    .pipe(concat('atoms.css'))
-    .pipe(gulp.dest(app.assets + '/css'))
 
 gulp.task 'coffee', ->
   gulp.src(www.coffee)
