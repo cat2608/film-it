@@ -41,7 +41,7 @@ module.exports = (server) ->
               parameters[key.toLowerCase()] = value for key, value of imdb when value isnt "N/A"
               Movie.register parameters
             , (error, movie) ->
-              List.register
+              List.updateOrRegister
                 user  : session
                 movie : movie._id
                 state : request.parameters.state
@@ -51,7 +51,7 @@ module.exports = (server) ->
               else
                   response.ok()
           else
-            List.register(
+            List.updateOrRegister(
               user  : session
               movie : movie._id
               state : request.parameters.state
@@ -60,21 +60,6 @@ module.exports = (server) ->
                 response.json message: error.message, error.code
               else
                 response.ok()
-
-  server.put "/api/user/movie", (request, response) ->
-    if request.required ["id", "state"]
-      Hope.shield([ ->
-        Session request, response
-      , (error, session) ->
-        filter =
-          user  : session
-          movie : request.parameters.id
-        List.updateAttributes filter, state: request.parameters.state
-      ]).then (error, result) ->
-        if error
-          response.json message: error.message, error.code
-        else
-          response.ok()
 
   server.delete "/api/user/movie", (request, response) ->
     if request.required ["id"]
