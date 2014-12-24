@@ -3,23 +3,22 @@ children:
   - Organism.Header:
       children:
         - Molecule.Navigation:
+            style: left
             children:
               - Atom.Button:
                   events:
                     - touch
                   icon: back
                   path: back
-            style: left
         - Atom.Heading:
             size: h1
             style: left
-            value: Film-it
+            value: filmit
   - Organism.Section:
       id: info
       children:
         - Atom.Figure:
             id: poster
-            style: big
         - Molecule.Div:
             id: extra
             style: margin-all

@@ -1,9 +1,10 @@
 [data-atom-li]
   &.film
-    padding: 0 !important
+    padding: 0 (U / 2) 0 0 !important
     figure
       width: SIZE = (3.5 * U) !important
       height: SIZE
+
 
 [data-molecule-form="search"]
   background-color: BACKGROUND !important
@@ -11,16 +12,50 @@
     font-size: FONT_SIZE_SMALL !important
     font-weight: FONT_WEIGHT_BOLD !important
 
-[data-organism-article] > [data-molecule-navigation] > [data-atom-button]
-  > small
+
+[data-organism-article]
+  > [data-organism-header] [data-atom-heading]
+    font-size: 1.3rem !important
+  > [data-molecule-navigation] > [data-atom-button] > small
     display: inline !important
     padding: 0 (U / 3)
 
+
+[data-organism-article="session"] [data-organism-section]
+  background-image: url("/assets/img/bck-landing.jpg") !important
+  background-size: cover
+  background-position: 50% 0
+  [data-atom-heading]
+    margin-top: (4 * U)
+    font-size: (4 * U)
+    font-weight: FONT_WEIGHT_BOLD
+    text-shadow 0 0 U DARK
+    color: THEME
+  [data-atom-input]
+    background-color: rgba(0,0,0,0.5) !important
+    box-shadow: none !important
+    font-weight: FONT_WEIGHT_BOLD !important
+    color: WHITE !important
+    &:hover, &:active
+      box-shadow: inset 0 -2px THEME !important
+  [data-atom-text]
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    margin: (U / 3) 0
+    font-size: .625rem
+    font-weight: FONT_WEIGHT_NORMAL
+    text-shadow 0 0 U DARK
+    color: rgba(255,255,255,0.75)
+
+
 [data-organism-article="film"]
   figure
+    display: block
+    height: 292px !important
     &.hide
       visibility: hidden
-
   label
     display: inline !important
     margin-right: (U / 4)
@@ -29,7 +64,6 @@
     color: WHITE !important
     font-weight: FONT_WEIGHT_BOLD !important
     background-color: THEME
-
   [data-atom-text]
     &.tiny
       font-weight: FONT_WEIGHT_BOLD

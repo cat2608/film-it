@@ -3,6 +3,8 @@ children:
       id: credentials
       style: centered padding
       children:
+        - Atom.Heading:
+            value: filmit
         - Molecule.Form:
             id: form
             events:
@@ -11,7 +13,7 @@ children:
               - Atom.Input:
                   name        : mail
                   placeholder : mail
-                  style       : align center big
+                  style       : align center
                   events:
                     - keyup
               - Atom.Input:
@@ -54,12 +56,6 @@ children:
                   style       : fluid signup-context
                   callbacks:
                     - onShowLogin
-        # - Molecule.Div:
-        #     id: div
-        #     children:
-        #       - Atom.Link:
-        #           id     : remember
-        #           text   : Remember my password
-        #           style  : margin-top login-context
-        #           href   : "http://appnima.com/forgot/5406dd44215f2b1946bbecc4"
-        #           target : _blank
+        - Atom.Text:
+            value: "Made with passion fruit & thai tea by @cataflu & @soyjavi"
+            style: "align center"

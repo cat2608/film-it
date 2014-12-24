@@ -4,7 +4,7 @@ children:
       children:
         - Atom.Heading:
             size: h1
-            value: Film-it
+            value: filmit
             style: left margin-left
   - Molecule.Navigation:
       id: context

@@ -1,6 +1,8 @@
 [data-atoms=app]
   [data-organism-article] > [data-organism-header] > [data-atom-heading]
     color: lighten(DARK, 100%)
+    font-weight: FONT_WEIGHT_BOLD
+
   [data-organism-aside] > [data-organism-header] > [data-atom-heading]
     color: lighten(DARK, 75%)
   [data-organism-article], [data-organism-aside]
@@ -8,7 +10,7 @@
       font-size: 1.1rem
       font-weight: FONT_WEIGHT_BOLD
       & + [data-atom-heading]
-        font-weight: FONT_WEIGHT_THIN
+        font-weight: FONT_WEIGHT_NORMAL
         opacity: 0.75
 
   [data-organism-section] >
