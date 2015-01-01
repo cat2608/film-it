@@ -6,6 +6,15 @@ children:
             size: h1
             value: filmit
             style: left margin-left
+        - Molecule.Navigation:
+            style: right margin-right
+            children:
+              - Atom.Button:
+                  events:
+                    - touch
+                  text: Sing out
+                  callbacks:
+                    - onSingout
   - Molecule.Navigation:
       id: context
       events:

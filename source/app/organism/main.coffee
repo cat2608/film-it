@@ -45,6 +45,10 @@ class Atoms.Organism.Main extends Atoms.Organism.Article
     @films.search.destroyChildren()
     false
 
+  onSingout: (event, atom) ->
+    window.localStorage.removeItem "filmit"
+    Atoms.Url.back()
+
   # -- Private methods ---------------------------------------------------------
   countFilms: =>
     @context.pending.refresh count: __.Entity.Film.pending().length
