@@ -24,13 +24,22 @@ class Atoms.Organism.Film extends Atoms.Organism.Article
       @entity.updateAttributes state: state
       Atoms.Url.back()
 
+  onDelete: (event, atom) ->
+    __.proxy("DELETE", "user/movie", id: @entity.id).then (error, response) =>
+      @entity.destroy()
+      Atoms.Url.back()
+
   # -- Private events ----------------------------------------------------------
   show: (@entity) =>
     @info.extra.button.list.el.show()
     @info.extra.button.viewed.el.show()
-    for key, value of STATE when @entity.state isnt value
-      @info.extra.button[key].el.show()
-      @info.extra.button[Object.keys(STATE)[@entity.state]].el.hide() if @entity.state isnt undefined
+    @info.extra.button.delete.el.hide()
+
+    if @entity.state isnt undefined
+      for key, value of STATE when @entity.state isnt value
+        @info.extra.button[key].el.show()
+        @info.extra.button[Object.keys(STATE)[@entity.state]].el.hide()
+        @info.extra.button.delete.el.show()
 
     style = if entity.poster then "big" else "hiden"
     @info.poster.refresh url: entity.poster, style: style
