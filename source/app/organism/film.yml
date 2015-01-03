@@ -44,16 +44,19 @@ children:
                   id: summary
                   style: small
               - Molecule.Navigation:
+                  id: button
                   style: margin-top
                   children:
                     - Atom.Button:
+                        id        : list
                         text      : Add to list
                         style     : theme
                         action    : fav
                         callbacks :
                           - onAction
                     - Atom.Button:
-                        text: Viewed
+                        id        : viewed
+                        text      : Viewed
                         action    : view
                         callbacks :
                           - onAction

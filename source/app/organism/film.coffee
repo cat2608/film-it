@@ -2,6 +2,10 @@ class Atoms.Organism.Film extends Atoms.Organism.Article
 
   @scaffold "assets/scaffold/film.json"
 
+  STATE =
+    list   : 0
+    viewed : 1
+
   constructor: ->
     super
     do @render
@@ -22,6 +26,12 @@ class Atoms.Organism.Film extends Atoms.Organism.Article
 
   # -- Private events ----------------------------------------------------------
   show: (@entity) =>
+    @info.extra.button.list.el.show()
+    @info.extra.button.viewed.el.show()
+    for key, value of STATE when @entity.state isnt value
+      @info.extra.button[key].el.show()
+      @info.extra.button[Object.keys(STATE)[@entity.state]].el.hide() if @entity.state isnt undefined
+
     style = if entity.poster then "big" else "hiden"
     @info.poster.refresh url: entity.poster, style: style
     @info.extra.title.el.html entity.title
