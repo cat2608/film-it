@@ -2,10 +2,25 @@
   &:not(.active)
     display: none
   &.active
-    &:not(.no-block)
-      // background-color: rgba(0,0,0,0.25)
+    &:not(.no-block):not(.loading)
       > [data-organism-dialog]
-        &:not(.side), &:not(.no-block)
+        background-color: lighten(BACKGROUND, 2.5%)
+        &, [data-atom-button], [data-atom-link]
+          color: darken(BACKGROUND, 75%)
+        &.accept > [data-organism-header]
+          background-color: ACCEPT
+        &.cancel > [data-organism-header]
+          background-color: CANCEL
+        &.warning > [data-organism-header]
+          background-color: WARNING
+        &.accept, &.cancel, &.warning
+          > [data-organism-header]
+            &, [data-atom-button], [data-atom-link]
+              color: WHITE
+        > [data-organism-footer]
+          background-color: darken(BACKGROUND, 2.5%)
+          border-top: solid 1px darken(BACKGROUND, 5%)
+        &:not(.side)
           &.show, &.hide
             vendor(animation-name, dialog-bottom)
         &.side
@@ -16,9 +31,23 @@
             &.show, &.hide
               vendor(animation-name, dialog-right)
 
+    &.loading
+      > [data-organism-dialog]
+        background-color: rgba(0,0,0,0.5)
+        &.show, &.hide
+          vendor(animation-name, dialog-loading-show)
+
     &.no-block
       transition height (.5 * ANIMATION_DURATION)
       > [data-organism-dialog]
+        background-color: DARK
+        color: WHITE
+        > section
+          background-color: WHITE
+          > figure
+            background-color: darken(BACKGROUND, 7.5%)
+          > p
+            color: DARK
         &.show, &.hide
           vendor(animation-name, dialog-bottom)
 
@@ -31,57 +60,9 @@
         vendor(animation-direction, reverse)
         vendor(animation-fill-mode, forwards)
 
-    > [data-organism-dialog=loading]
-      SPEED = ANIMATION_DURATION * 1.4
-      &::before
-        animation dialog-loading SPEED 0 infinite
-      &::after
-        animation dialog-loading SPEED (SPEED / 2) infinite
-
-  > :not([data-organism-dialog=loading]):not([data-organism-dialog=push])
-    background-color: lighten(BACKGROUND, 2.5%)
-
-    &, [data-atom-button], [data-atom-link]
-      color: darken(BACKGROUND, 75%)
-
-    &.accept
-      > [data-organism-header]
-        background-color: ACCEPT
-    &.cancel
-      > [data-organism-header]
-        background-color: CANCEL
-    &.warning
-      > [data-organism-header]
-        background-color: WARNING
-    &.accept, &.cancel, &.warning
-      > [data-organism-header]
-        &, [data-atom-button], [data-atom-link]
-          color: WHITE
-
-    > [data-organism-footer]
-      background-color: darken(BACKGROUND, 2.5%)
-      border-top: solid 1px darken(BACKGROUND, 5%)
-
-  > [data-organism-dialog=loading]
-    background: darken(DARK, 50%)
-    border-radius: 1rem
-    &::before, &::after
-      background-color: WHITE
-      border-radius: 50%
-
-  > [data-organism-dialog=push]
-    background-color: DARK
-    color: WHITE
-    > section
-      background-color: WHITE
-      > figure
-        background-color: darken(BACKGROUND, 7.5%)
-      > p
-        color: DARK
-
+// -- ANIMATIONS ---------------------------------------------------------------
 @keyframes dialog-show
   0%
-    // opacity: 0
     transform scale3d(1.1, 1.1, 1)
   100%
     opacity: 1
@@ -89,7 +70,6 @@
 
 @keyframes dialog-bottom
   0%
-    // opacity: 0
     transform: translateY(250%)
   100%
     opacity: 1
@@ -97,7 +77,6 @@
 
 @keyframes dialog-left
   0%
-    // opacity: 0
     transform: translateX(-150%)
   100%
     opacity: 1
@@ -105,19 +84,13 @@
 
 @keyframes dialog-right
   0%
-    // opacity: 0
     transform: translateX(150%)
   100%
     opacity: 1
     transform: translateX(0)
 
-@keyframes dialog-loading
+@keyframes dialog-loading-show
   0%
-    opacity: 1
-    transform scale(1)
-  50%
-    opacity: 0.5
-    transform scale(0.65)
+    opacity: 0
   100%
     opacity: 1
-    transform scale(1)

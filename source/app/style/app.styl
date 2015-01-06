@@ -11,6 +11,10 @@
     color: WHITE
     border-radius: BORDER_RADIUS
 
-@media screen and (min-resolution: 3dppx)
-  [data-atoms=app], html
-    font-size: 110%
+  .loading-animation
+    &::before, &::after
+      background-color: WHITE
+
+// @media screen and (min-resolution: 3dppx)
+//   [data-atoms=app], html
+//     font-size: 110%

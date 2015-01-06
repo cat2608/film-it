@@ -50,20 +50,20 @@ children:
                     - Atom.Button:
                         id        : list
                         text      : Pending
-                        style     : theme
                         action    : fav
+                        style     : theme
                         callbacks :
                           - onAction
                     - Atom.Button:
                         id        : viewed
                         text      : Viewed
-                        style     : accept
                         action    : view
                         callbacks :
                           - onAction
                     - Atom.Button:
                         id        : delete
                         text      : Delete
+                        # style     : cancel
                         action    : delete
                         callbacks :
                           - onDelete
