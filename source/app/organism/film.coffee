@@ -48,7 +48,8 @@ class Atoms.Organism.Film extends Atoms.Organism.Article
     @info.extra.runtime.el.html entity.runtime
     @info.extra.director.el.html entity.director
     @info.extra.actors.el.html entity.actors
-    @info.extra.summary.el.html entity.plot
+    @info.extra.summary.el.html entity.plot or ""
+
     Atoms.Url.path "film/info"
 
 new Atoms.Organism.Film()
