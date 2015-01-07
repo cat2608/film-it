@@ -18,7 +18,15 @@ module.exports = (server) ->
         omdb.resource "GET", null, s: request.parameters.title
       ]).then (error, result) ->
         if error
-          response.json message: error.message, error.code
+          omdb.resource("GET", null, t: request.parameters.title).then (error, omdb) ->
+            return response.json message: error.message, error.code if error
+            movies = []
+            movies.push
+              title   : omdb.Title
+              type    : omdb.Type
+              year    : omdb.Year
+              imdb    : omdb.imdbID
+            response.json movies: movies
         else
           movies = []
           for movie in result.Search
