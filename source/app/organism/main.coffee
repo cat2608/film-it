@@ -37,8 +37,16 @@ class Atoms.Organism.Main extends Atoms.Organism.Article
     do @onSearchChange
     parameters = title: input.value()
     __.proxy("GET", "movie/search", parameters).then (error, response) =>
-      __.Entity.FilmIMDB.create movie for movie in response?.movies or []
-    false
+      if error
+        message =
+          title       : "Ooops!! Your search did not match any movie."
+          description : "Please try again."
+          image       : "assets/img/movie.png"
+          timeout     : 4000
+        __.Dialog.Push.show message
+      else
+        __.Entity.FilmIMDB.create movie for movie in response?.movies or []
+      false
 
   onSearchChange: (event, input) ->
     __.Entity.FilmIMDB.destroyAll()

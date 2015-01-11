@@ -48,7 +48,7 @@ children:
                   style: margin-top
                   children:
                     - Atom.Button:
-                        id        : list
+                        id        : pending
                         text      : Pending
                         action    : fav
                         style     : theme

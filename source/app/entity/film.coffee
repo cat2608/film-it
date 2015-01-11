@@ -23,7 +23,7 @@ class __.Entity.Film extends Atoms.Class.Entity
   @viewed: -> @select (entity) -> entity if entity.state is STATE.VIEWED
 
   parse: ->
-    image       : @poster or "https://cdn4.iconfinder.com/data/icons/eldorado-multimedia/40/movie_1-512.png"
+    image       : @poster or "assets/img/movie.png"
     info        : @year
     text        : @title
     description : @director
