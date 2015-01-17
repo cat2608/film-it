@@ -43,7 +43,7 @@ module.exports = (server) ->
         filter = imdbid: request.parameters.imdb
         Movie.search(filter, limit = 1).then (error, movie) ->
           if not movie
-            query = i: request.parameters.imdb
+            query = i: request.parameters.imdb, plot: "full"
             omdb.resource("GET", null, query).then (error, imdb) ->
               return response.json message: error.message, error.code if error?
               parameters = {}

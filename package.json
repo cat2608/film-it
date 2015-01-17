@@ -1,8 +1,8 @@
 {
   "name"            : "film-it",
-  "version"         : "0.0.2",
+  "version"         : "0.1.17",
   "description"     : "TODO films",
-  "homepage"        : "http://",
+  "homepage"        : "http://filmit.watch",
   "author"          : "Catalina Oyaneder <cat2608@gmail.com>",
   "dependencies": {
     "coffee-script" : "*",
