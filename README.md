@@ -2,7 +2,7 @@ filmit
 =======
 
 This simple app was made to collect recommendations about movies.
-It's like a "TODO movies" and wad built using atoms
+It's like a "TODO movies" and was built using atoms
 [atoms](http://atoms.tapquo.com)
 
 You can try it downloading from
