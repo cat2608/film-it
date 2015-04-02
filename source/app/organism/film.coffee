@@ -47,14 +47,14 @@ class Atoms.Organism.Film extends Atoms.Organism.Article
         @info.extra.button[Object.keys(STATE)[@entity.state]].el.hide()
         @info.extra.button.delete.el.show()
 
-    style = if entity.poster then "big" else "hidden"
-    @info.poster.refresh url: entity.poster, style: style
-    @info.extra.title.el.html entity.title
-    @info.extra.year.el.html entity.year.toString()
-    @info.extra.runtime.el.html entity.runtime
-    @info.extra.director.el.html entity.director
-    @info.extra.actors.el.html entity.actors
-    @info.extra.summary.el.html entity.plot or ""
+    style = if @entity.poster then "big" else "hidden"
+    @info.poster.refresh url: @entity.poster, style: style
+    @info.extra.title.el.html @entity.title
+    @info.extra.year.el.html @entity.year.toString()
+    @info.extra.runtime.el.html @entity.runtime
+    @info.extra.director.el.html @entity.director
+    @info.extra.actors.el.html @entity.actors
+    @info.extra.summary.el.html @entity.plot or ""
 
     Atoms.Url.path "film/info"
 

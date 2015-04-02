@@ -14,10 +14,9 @@
         "jquery"            : "*",
         "modernizer"        : "*",
         "stylmethods"       : "*",
-        "atoms"             : "*",
+        "atoms"             : "0.14.23",
         "atoms-icons"       : "*",
         "atoms-app-theme"   : "*",
         "hope"              : "*"
     }
 }
-
