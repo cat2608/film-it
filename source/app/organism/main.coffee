@@ -53,9 +53,9 @@ class Atoms.Organism.Main extends Atoms.Organism.Article
     @films.search.destroyChildren()
     false
 
-  onSingout: (event, atom) ->
+  onLogout: (event, atom) ->
     window.localStorage.removeItem "filmit"
-    Atoms.Url.back()
+    Atoms.Url.path "session/credentials"
 
   # -- Private methods ---------------------------------------------------------
   countFilms: =>
