@@ -16,16 +16,16 @@ tests:
 # ------------------------------------------------------------------------------
 users:
     - name      : U1
-      mail      : u1@film.it
+      mail      : u1@filmit.watch
       password  : u1
     - name      : U2
-      mail      : u2@film.it
+      mail      : u2@filmit.watch
       password  : u2
     - name      : U3
-      mail      : u3@film.it
+      mail      : u3@filmit.watch
       password  : u3
     - name      : U4
-      mail      : u4@film.it
+      mail      : u4@filmit.watch
       password  : u4
 movies:
     - title : Friday the 13th

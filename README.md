@@ -2,8 +2,7 @@ filmit
 =======
 
 This simple app was made to collect recommendations about movies.
-It's like a "TODO movies" and was built using atoms
-[atoms](http://atoms.tapquo.com)
+It's like a "TODO movies" and was built using [atoms](http://atoms.tapquo.com)
 
 You can try it downloading from
 [Google Play](https://play.google.com/store/apps/details?id=com.cataflu.filmit)
