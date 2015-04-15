@@ -12,9 +12,9 @@ children:
               - Atom.Button:
                   events:
                     - touch
-                  text: Sing out
+                  text: Log Out
                   callbacks:
-                    - onSingout
+                    - onLogout
   - Molecule.Navigation:
       id: context
       events:
