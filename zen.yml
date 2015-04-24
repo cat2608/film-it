@@ -4,7 +4,7 @@ port    : 8888
 timezone: Europe/Amsterdam
 
 # -- Environment ---------------------------------------------------------------
-environment: development
+environment: production
 
 # -- RESTful services ----------------------------------------------------------
 api:
