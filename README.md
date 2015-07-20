@@ -1,5 +1,6 @@
 filmit
 =======
+http://filmit.watch
 
 This simple app was made to collect recommendations about movies.
 It's like a "TODO movies" and was built using [atoms](http://atoms.tapquo.com)
