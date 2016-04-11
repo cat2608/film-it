@@ -5,7 +5,7 @@ __.proxy = (type, method, parameters = {}, background = false) ->
   unless background then do __.Dialog.Loading.show
 
   $$.ajax
-    url         : "http://filmit.watch/api/#{method}"
+    url         : "https://filmit.watch/api/#{method}"
     type        : type
     data        : parameters
     contentType : "application/x-www-form-urlencoded"

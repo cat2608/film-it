@@ -1,0 +1,31 @@
+{
+  "short_name": "Filmit",
+  "name": "Filmit",
+  "icons": [
+    {
+      "src": "assets/img/filmit-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/filmit-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/filmit-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/filmit-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#ce9a00",
+  "theme_color": "#FFFFFF"
+}
